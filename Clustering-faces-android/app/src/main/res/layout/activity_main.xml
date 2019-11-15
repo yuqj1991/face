@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queueing face finders..."
+            android:textSize="18sp"
+            android:visibility="gone"/>
+        <ProgressBar
+            android:id="@+id/face_queue_pbar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:padding="5dp"
+            android:progress="0"
+            android:visibility="gone"
+            android:progressDrawable="@drawable/blue_progress"/>
+
+        <!-->##############GET FACES#################<-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:elevation="10dp"
+            android:background="@drawable/customborder"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select input photos"
+                android:textSize="18sp"/>
+            <Button
+                android:id="@+id/select_photos_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Pick\nPhotos"
+                android:textSize="12sp"
+                android:onClick="selectInputPhotos"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Min face size"
+                android:textSize="18sp"/>
+            <SeekBar
+                android:id="@+id/min_face_size_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:theme="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:max="5"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Accurate"
+                    android:textSize="18sp"/>
+                <Switch
+                    android:id="@+id/face_detect_mode_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Fast"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/get_faces_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Get\nFaces"
+                android:textSize="12sp"
+                android:onClick="getFaces"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Extracting face crops..."
+                android:textSize="18sp"/>
+            <ProgressBar
+                android:id="@+id/face_pbar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/blue_progress"/>
+        </LinearLayout>
+        <!-->##############GET FACES#################<-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queueing face encoders..."
+            android:textSize="18sp"
+            android:visibility="gone"/>
+        <ProgressBar
+            android:id="@+id/encoding_queue_pbar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:padding="5dp"
+            android:progress="0"
+            android:visibility="gone"
+            android:progressDrawable="@drawable/blue_progress"/>
+
+        <!-->##############ENCODE FACES#################<-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:elevation="10dp"
+            android:background="@drawable/customborder"
+            android:layout_marginBottom="5dp">
+            <Button
+                android:id="@+id/get_encodings_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Encode\nFaces"
+                android:textSize="12sp"
+                android:onClick="getEncodings"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Generating face encodings..."
+                android:textSize="18sp"/>
+            <ProgressBar
+                android:id="@+id/encoding_pbar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/blue_progress"/>
+        </LinearLayout>
+        <!-->##############ENCODE FACES#################<-->
+
+        <!-->##############CLUSTER FACES#################<-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:elevation="10dp"
+            android:background="@drawable/customborder"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select clustering method"
+                android:textSize="18sp"/>
+            <Spinner
+                android:id="@+id/cluster_type_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/kmeans_cluster_count_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter k :"
+                android:textSize="18sp"
+                android:visibility="gone"/>
+            <EditText
+                android:id="@+id/kmeans_cluster_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:inputType="number"
+                android:visibility="gone"
+                android:paddingBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/dbscan_eps_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter eps"
+                android:textSize="18sp"/>
+            <EditText
+                android:id="@+id/dbscan_eps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7.8"
+                android:inputType="numberDecimal"/>
+            <TextView
+                android:id="@+id/dbscan_min_count_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter min pts"
+                android:textSize="18sp"/>
+            <EditText
+                android:id="@+id/dbscan_min_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:inputType="number"/>
+            <TextView
+                android:id="@+id/cw_threshold_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Threshold"
+                android:textSize="18sp"/>
+            <EditText
+                android:id="@+id/cw_threshold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="75"
+                android:inputType="number"/>
+
+            <Button
+                android:id="@+id/cluster_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Group\nFaces"
+                android:textSize="12sp"
+                android:onClick="getClusters"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+
+            <TextView
+                android:id="@+id/cw_graph_pbar_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Creating graph..."
+                android:textSize="18sp"
+                android:visibility="gone"/>
+            <ProgressBar
+                android:id="@+id/cw_graph_pbar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:progress="0"
+                android:visibility="gone"
+                android:progressDrawable="@drawable/blue_progress"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clustering faces..."
+                android:textSize="18sp"/>
+            <ProgressBar
+                android:id="@+id/clustering_pbar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/blue_progress"/>
+            <TextView
+                android:id="@+id/cluster_output_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Cluster result : "/>
+        </LinearLayout>
+        <!-->##############CLUSTER FACES#################<-->
+
+        <!-->##############SAVE RESULTS#################<-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:elevation="10dp"
+            android:background="@drawable/customborder"
+            android:layout_marginBottom="5dp">
+            <Button
+                android:id="@+id/save_results_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Save\nResults"
+                android:textSize="12sp"
+                android:onClick="getResults"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saving results..."
+                android:textSize="18sp"/>
+            <ProgressBar
+                android:id="@+id/save_results_pbar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/blue_progress"/>
+            <Button
+                android:id="@+id/show_results_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                android:text="Show\nResults"
+                android:textSize="12sp"
+                android:onClick="showResults"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+        </LinearLayout>
+        <!-->##############SAVE RESULTS#################<-->
+
+    </LinearLayout>
+</ScrollView>
